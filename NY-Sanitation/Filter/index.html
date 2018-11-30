@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Filter</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+	<div align=right class="container-nav100">
+			<a href="../Register/">Register</a>
+		</div>
+		<div align=right class="container-nav100">
+			<a href="../Login/">Login</a>
+		</div>
+		<div align=left class="container-nav200">
+			<a href="../"><h2> New York Restaurant Sanitation Lookup </h2></a>
+		</div>
+		<div class="container-login100">
+			<div align=center>
+				<form class="login100-form validate-form">
+					<span class="login100-form-title">
+						Filter Our Database
+					</span>
+
+					<div class="wrap-input100">
+						<h2 class="h2-type2"> Select a type of cuisine </h2>
+						<select class="select100">
+							<option value="no-preference">No Preference</option>
+							<option value="american">American</option>
+							<option value="chinese">Chinese</option>
+							<option value="cafe">Cafe</option>
+							<option value="pizza">Pizza</option>
+							<option value="latin">Latin</option>
+							<option value="italian">Italian</option>
+							<option value="mexican">Mexican</option>
+							<option value="japanese">Japanese</option>
+							<option value="caribbean">Caribbean</option>
+							<option value="bakery">Bakery</option>
+							<option value="spanish">Spanish</option>
+							<option value="chicken">Chicken</option>
+							<option value="indian">Indian</option>
+							<option value="asian">Asian</option>
+							<option value="delicatessen">Delicatessen</option>
+							<option value="jewish/kosher">Jewish/Kosher</option>
+							<option value="donuts">Donuts</option>
+							<option value="korean">Korean</option>
+							<option value="thai">Thai</option>
+							<option value="hamburgers">Hamburgers</option>
+							<option value="french">French</option>
+							<option value="sandwiches">Sandwiches</option>
+							<option value="juice">Juice</option>
+							<option value="mediterranean">Mediterranean</option>
+							<option value="irish">Irish</option>
+							<option value="ice-cream">Ice Cream</option>
+							<option value="seafood">Seafood</option>
+							<option value="bagels/pretzels">Bagels/Pretzels</option>
+							<option value="salads">Salads</option>
+							<option value="middle-eastern">Middle Eastern</option>
+							<option value="other">Other</option>
+							<option value="greek">Greek</option>
+							<option value="tex-mex">Tex-Mex</option>
+							<option value="vietnamese/cambodian/malaysia">Vietnamese/Cambodian/Malaysia</option>
+							<option value="vegetarian">Vegetarian</option>
+							<option value="peruvian">Peruvian</option>
+							<option value="african">African</option>
+							<option value="eastern">Eastern</option>
+							<option value="european">European</option>
+							<option value="bottled-beverages">Bottled Beverages</option>
+							<option value="steak">Steak</option>
+							<option value="russian">Russian</option>
+							<option value="turkish">Turkish</option>
+							<option value="soul-food">Soul Food</option>
+							<option value="bangladeshi">Bangladeshi</option>
+							<option value="continental">Continental</option>
+							<option value="barbecue">Barbecue</option>
+							<option value="pakistan">Pakistani</option>
+							<option value="filipino">Filipino</option>
+							<option value="creole">Creole</option>
+							<option value="polish">Polish</option>
+							<option value="soups">Soups</option>
+							<option value="tapas">Tapas</option>
+							<option value="german">German</option>
+							<option value="brazilian">Brazilian</option>
+							<option value="armenian">Armenian</option>
+							<option value="hawaiian">Hawaiian</option>
+							<option value="australian">Australian</option>
+							<option value="cuban">Cuban</option>
+							<option value="hotdogs">Hotdogs</option>
+							<option value="ethiopian">Ethiopian</option>
+							<option value="english">English</option>
+							<option value="egyptian">Egyptian</option>
+							<option value="pancakes/waffles">Pancakes/Waffles</option>
+							<option value="moroccan">Moroccan</option>
+							<option value="afghan">Afghan</option>
+							<option value="portuguese">Portuguese</option>
+							<option value="american">Cajun</option>
+							<option value="cajun">Southwestern</option>
+							<option value="indonesian">Indonesian</option>
+							<option value="not-listed">Not Listed/Not Applicable</option>
+							<option value="american">Scandinavian</option>
+							<option value="californian">Californian</option>
+							<option value="fruits/vegetables">Fruits/Vegetables</option>
+							<option value="iranian">Iranian</option>
+							<option value="czech">Czech</option>
+							<option value="polynesian">Polynesian</option>
+							<option value="nuts/confectionary">Nuts/Confectionary</option>
+							<option value="chilean">Chilean</option>
+							<option value="basque">Basque</option>
+						</select>
+					</div>
+					
+					<div class="wrap-input100">
+						<h2 class="h2-type2"> Select a borough </h2>
+						<select class="select100">
+							<option value="no-preference">No Preference</option>
+							<option value="manhattan">Manhattan</option>
+							<option value="brooklyn">Brooklyn</option>
+							<option value="queens">Queens</option>
+							<option value="bronx">The Bronx</option>
+							<option value="staten-island">Staten Island</option>
+						</select>
+					</div>
+					
+					<div class="wrap-input100">
+						<h2 class="h2-type2"> Select a score </h2>
+						<select class="select100">
+							<option value="no-preference">No Preference</option>
+							<option value="0-10">0 - 10</option>
+							<option value="11-20">11 - 20</option>
+							<option value="21-30">21 - 30</option>
+							<option value="31-40">31 - 40</option>
+							<option value="41-50">41 - 50</option>
+							<option value="51-60">51 - 60</option>
+							<option value="61-70">61 - 70</option>
+							<option value="71-80">71 - 80</option>
+							<option value="81-70">81 - 90</option>
+							<option value="91-100">91 - 100</option>
+						</select>
+					</div>
+					
+										
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Search
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
