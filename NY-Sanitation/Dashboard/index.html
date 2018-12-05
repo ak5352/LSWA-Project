@@ -1,57 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>NY Restaurant Sanitation</title>
+	<title>Dashboard</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="index-fluff/images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="index-fluff/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="index-fluff/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="index-fluff/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="index-fluff/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="index-fluff/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="index-fluff/css/util.css">
-	<link rel="stylesheet" type="text/css" href="index-fluff/css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
 <body>
 	
 	<div class="limiter">
 		<div align=right class="container-nav100">
-			<a href="../Register/">Register</a>
+			<a href="Register/">Register</a>
 		</div>
 		<div align=right class="container-nav100">
-			<a href="../Login/">Login</a>
+			<a href="Login/">Login</a>
 		</div>
 		<div align=left class="container-nav200">
 			<a href="../"><h2> New York Restaurant Sanitation Lookup </h2></a>
 		</div>
 		<div align=left class="container-nav100">
-			<p> <a href="Dashboard">Dashboard</a> </p>
+			<p> Dashboard </p>
 		</div>
+		
 		<div class="container-login100">
-			<div align=center>
-					<span class="login100-form-title">
-						How would you like to search restaurants?
-					</span>										
-					<div class="container-login100-form-btn">
-						<a href="Search/"><button class="login100-form-btn">
-							Search Through Input
-						</button></a>
-					</div>
-					<div class="container-login100-form-btn">
-						<a href="Filter"><button class="login100-form-btn">
-							Search Through Filters
-						</button></a>
-					</div>
-			</div>
+			<table class="container">
+			
+			<span class="login100-form-title">
+						Restaurants that made you sick
+			</span>
+	<thead>
+		<tr>
+			<th><h1>Restaurant Name</h1></th>
+			<th><h1>Cusine Type</h1></th>
+			<th><h1>Address</h1></th>
+			<th><h1>Score</h1></th>
+			<th><h1>Sick Count</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Blah</td>
+			<td>Blah</td>
+			<td>Blah</td>
+			<td>Blah</td>
+			<td>Blah</td>
+		</tr>
+		<tr>
+			<td>Blah</td>
+			<td>Blah</td>
+			<td>Blah</td>
+			<td>Blah</td>
+			<td>Blah</td>
+		</tr>
+	</tbody>
+</table>
 		</div>
 	</div>
 	
@@ -59,21 +76,21 @@
 
 	
 <!--===============================================================================================-->	
-	<script src="index-fluff/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="index-fluff/endor/bootstrap/js/popper.js"></script>
-	<script src="index-fluff/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="index-fluff/vendor/select2/select2.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="index-fluff/vendor/tilt/tilt.jquery.min.js"></script>
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="index-fluff/js/main.js"></script>
+	<script src="js/main.js"></script>
 
 </body>
 </html>

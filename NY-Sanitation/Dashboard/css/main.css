@@ -247,7 +247,7 @@ iframe {
 
   width: 100%;
   display: block;
-  padding-bottom: 54px;
+  padding-bottom: 24px;
 }
 
 
@@ -543,6 +543,7 @@ iframe {
 }
 
 .container td:first-child { color: #FB667A; }
+
 
 @media (max-width: 992px) {
   .alert-validate::before {
