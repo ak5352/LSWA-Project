@@ -15,6 +15,6 @@ class resturants(models.Model):
     Zipcode  = models.CharField(max_length=100)
     Address  = models.CharField(max_length=100)
     Sanitation = models.DecimalField(max_digits=999, decimal_places=2)
-    Sickness = models.IntergerField()
+    Sickness = models.IntegerField()
 
 # Create your models here.
