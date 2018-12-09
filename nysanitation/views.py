@@ -6,15 +6,15 @@ from django.shortcuts import redirect
 
 
 def index(request):
-    return render(request, 'static/index.html')
+    return render(request, 'index.html')
 
 
 def Dashboard(request):
-    return render(request, 'static/Dashboard/index.html')
+    return render(request, 'Dashboard/index.html')
 
 
 def Filter(request):
-    return render(request, 'static/Filter/index.html')
+    return render(request, 'Filter/index.html')
 
 
 def Login(request):
@@ -26,7 +26,7 @@ def Login(request):
         if user is not None:
             login(request, user)
             return redirect('Dashboard')
-    return render(request, 'static/Login/index.html')
+    return render(request, 'Login/index.html')
 
 
 def Register(request):
@@ -40,8 +40,8 @@ def Register(request):
         if user is not None:
             login(request, user)
             return redirect('Dashboard')
-    return render(request, 'static/Register/index.html')
+    return render(request, 'Register/index.html')
 
 
 def Search(request):
-    return render(request, 'static/Search/index.html')
+    return render(request, 'Search/index.html')
