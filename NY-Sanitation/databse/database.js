@@ -23,7 +23,23 @@ client.connect(function(err) {
     }
     console.log(result.rows);
     // >> output: 2018-08-23T14:02:57.117Z
-    client.end();
+    
+  });
+  client.query('INSERT INTO users (name, username, password, resturants) VALUES ($1, $2, $3, $4)', ["Henry", "username", "Password", ["some","resutr","ant"]], function(err, result) {
+    if(err) {
+      return console.error('error running query', err);
+    }
+    console.log(result.rows);
+    // >> output: 2018-08-23T14:02:57.117Z
+   
+  });
+  client.query('SELECT * FROM "users"', function(err, result) {
+    if(err) {
+      return console.error('error running query', err);
+    }
+    console.log(result.rows);
+    // >> output: 2018-08-23T14:02:57.117Z
+   client.end;
   });
 
 });
