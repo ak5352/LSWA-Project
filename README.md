@@ -13,3 +13,7 @@ NY Restaurant Sanitation Lookup
 8. When the user logs in, the service should check if the email exists in the database and that the password matches.
 9. When the user registers, the service should check if the email is already in the database and then output and error message. 
 10. Otherwise, the service should add the information to the users database and redirect the user to the login page. (Or output a message that tells them to go to the login page).
+
+
+## Running the containers
+docker-compose up nginx
