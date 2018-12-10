@@ -8,6 +8,7 @@ from django.db.models.query import QuerySet
 from pprint import PrettyPrinter
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
+from django.shortcuts import get_object_or_404
 
 def dprint(object, stream=None, indent=1, width=80, depth=None):
     """
@@ -76,11 +77,15 @@ def Filter(request):
 
 
 def Login(request):
-    email = request.GET.get('email', '');
-    passw = request.GET.get('pass', '');
+    email = request.POST.get('email', '');
+    passw = request.POST.get('pass', '');
+    user = None
     if (email != "" and passw != ""):
-        usern = User.objects.get(email=email.lower()).username
-        user = authenticate(username=usern, password=passw)
+        try:
+            usern = get_object_or_404(User, email=email.lower())
+        except:
+            return render(request, 'Login/index.html', {'failed': True})
+        user = authenticate(username=usern.name, password=passw)
         if user is not None:
             login(request, user)
             return redirect('Dashboard')
@@ -88,12 +93,15 @@ def Login(request):
 
 
 def Register(request):
-    user = request.GET.get('name', '');
-    email = request.GET.get('email', '');
-    passw = request.GET.get('pass', '');
+    user = request.POST.get('name', '');
+    email = request.POST.get('email', '');
+    passw = request.POST.get('pass', '');
     if (user != "" and passw != "" and email != ""):
-        user = User.objects.create_user(user, email, passw)
-        user.save()
+        try:
+            user = User.objects.create_user(user, email, passw)
+            user.save()
+        except:
+            return render(request, 'Register/index.html', {'failed': True})
         user = authenticate(username=user, password=passw)
         if user is not None:
             login(request, user)
