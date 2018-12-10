@@ -45,12 +45,12 @@
 
 					<div class="wrap-input100">
 						<h2 class="h2-type2"> Select a type of cuisine </h2>
-						<select class="select100">
+						<select class="select100" name="cuisine">
 							<option value="no-preference">No Preference</option>
 							<option value="american">American</option>
 							<option value="chinese">Chinese</option>
 							<option value="cafe">Cafe</option>
-							<option value="pizza">Pizza</option>
+							<option value="pizza/Italian">Pizza</option>
 							<option value="latin">Latin</option>
 							<option value="italian">Italian</option>
 							<option value="mexican">Mexican</option>
@@ -132,19 +132,19 @@
 
 					<div class="wrap-input100">
 						<h2 class="h2-type2"> Select a borough </h2>
-						<select class="select100">
+						<select class="select100" name="borough">
 							<option value="no-preference">No Preference</option>
-							<option value="manhattan">Manhattan</option>
-							<option value="brooklyn">Brooklyn</option>
-							<option value="queens">Queens</option>
-							<option value="bronx">The Bronx</option>
-							<option value="staten-island">Staten Island</option>
+							<option value="MANHATTAN">Manhattan</option>
+							<option value="BROOKLYN">Brooklyn</option>
+							<option value="QUEENS">Queens</option>
+							<option value="BRONX">The Bronx</option>
+							<option value="STATEN ISLAND">Staten Island</option>
 						</select>
 					</div>
 
 					<div class="wrap-input100">
 						<h2 class="h2-type2"> Select a score </h2>
-						<select class="select100">
+						<select class="select100" name="score">
 							<option value="no-preference">No Preference</option>
 							<option value="0-10">0 - 10</option>
 							<option value="11-20">11 - 20</option>
@@ -165,10 +165,14 @@
 							Search
 						</button>
 					</div>
+          {% for rest in results %}
+          <hr>
+          <li>{{ rest.name }}, {{ rest.borough }}, {{ rest.cuisine }}, {{ rest.score }}, {{ rest.violation }}</li>
+          {% endfor %}
 				</form>
 			</div>
 		</div>
-	</div>
+    	</div>
 
 
 
