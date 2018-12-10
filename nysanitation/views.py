@@ -66,7 +66,7 @@ def Login(request):
             usern = get_object_or_404(User, email=email.lower())
         except:
             return render(request, 'Login/index.html', {'failed': True})
-        user = authenticate(username=usern.name, password=passw)
+        user = authenticate(username=usern.username, password=passw)
         if user is not None:
             login(request, user)
             return redirect('Dashboard')
