@@ -6,6 +6,8 @@ from django.shortcuts import redirect
 from .models import resturant, Profile
 from django.db.models.query import QuerySet
 from pprint import PrettyPrinter
+from django.contrib.auth.decorators import login_required
+from django.db.models import F
 
 def dprint(object, stream=None, indent=1, width=80, depth=None):
     """
@@ -40,19 +42,36 @@ def index(request):
     return render(request, 'index.html')
 
 
+@login_required(login_url='/Login/')
 def Dashboard(request):
-    return render(request, 'Dashboard/index.html')
+    if request.method == 'POST':
+        r_id = request.POST["r_id"]
+        rest = resturant.objects.filter(pk=r_id).update(count = F('count')+1)
+        user = request.user
+        user.profile.restaurants_list.append(r_id)
+        user.save()
+
+    user_rests = user.profile.restaurants_list
+    rest = resturant.objects.filter(id__in=user_rests)
+    return render(request, 'Dashboard/index.html', {'results': rest})
 
 
 def Filter(request):
     cuisine = request.GET.get('cuisine', '');
     borough = request.GET.get('borough', '');
     score = request.GET.get('score', '');
-    rest = 0
-    if (cuisine != '' and borough != '' and score != ''):
-        if (cuisine != 'no-preference' and borough != 'no-preference' and score != 'no-preference'):
-            rest = resturant.objects.filter(cuisine=cuisine.capitalize()).filter(borough=borough)
-            return render(request, 'Filter/index.html', {'results': rest})
+    if cuisine != '' and borough != '' and score != '':
+        print("HERE")
+        kwargs = {}
+        if cuisine != 'no-preference':
+            kwargs["cuisine"]=cuisine.capitalize()
+        if borough != 'no-preference':
+            kwargs["borough"]=borough
+        if score != 'no-preference':
+            kwargs["score"]=int(score)
+
+        rest = resturant.objects.filter(**kwargs)
+        return render(request, 'Filter/index.html', {'results': rest})
     return render(request, 'Filter/index.html')
 
 

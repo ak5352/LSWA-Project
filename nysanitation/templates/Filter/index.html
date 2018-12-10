@@ -50,7 +50,7 @@
 							<option value="american">American</option>
 							<option value="chinese">Chinese</option>
 							<option value="cafe">Cafe</option>
-							<option value="pizza/Italian">Pizza</option>
+							<option value="Pizza/Italian">Pizza</option>
 							<option value="latin">Latin</option>
 							<option value="italian">Italian</option>
 							<option value="mexican">Mexican</option>
@@ -146,16 +146,16 @@
 						<h2 class="h2-type2"> Select a score </h2>
 						<select class="select100" name="score">
 							<option value="no-preference">No Preference</option>
-							<option value="0-10">0 - 10</option>
-							<option value="11-20">11 - 20</option>
-							<option value="21-30">21 - 30</option>
-							<option value="31-40">31 - 40</option>
-							<option value="41-50">41 - 50</option>
-							<option value="51-60">51 - 60</option>
-							<option value="61-70">61 - 70</option>
-							<option value="71-80">71 - 80</option>
-							<option value="81-70">81 - 90</option>
-							<option value="91-100">91 - 100</option>
+							<option value="0">0 - 10</option>
+							<option value="10">11 - 20</option>
+							<option value="20">21 - 30</option>
+							<option value="30">31 - 40</option>
+							<option value="40">41 - 50</option>
+							<option value="50">51 - 60</option>
+							<option value="60">61 - 70</option>
+							<option value="70">71 - 80</option>
+							<option value="80">81 - 90</option>
+							<option value="90">91 - 100</option>
 						</select>
 					</div>
 
@@ -165,11 +165,33 @@
 							Search
 						</button>
 					</div>
-          {% for rest in results %}
-          <hr>
-          <li>{{ rest.name }}, {{ rest.borough }}, {{ rest.cuisine }}, {{ rest.score }}, {{ rest.violation }}</li>
-          {% endfor %}
-				</form>
+        </form>
+			  <table class="container">
+        <thead>
+		        <tr>
+			          <th><h1>Restaurant Name</h1></th>
+			          <th><h1>Cusine Type</h1></th>
+			          <th><h1>Address</h1></th>
+			          <th><h1>Score</h1></th>
+			          <th><h1>Sick Count</h1></th>
+                <th><h1>Report</h1></th>
+		        </tr>
+	      </thead>
+	      <tbody>
+            {% for rest in results %}
+            <tr>
+                <td>{{ rest.name }}</td>
+                <td>{{ rest.cuisine }}</td>
+                <td>{{ rest.address }}</td>
+                <td>{{ rest.score }}</td>
+                <td>{{ rest.count }}</td>
+                <td><form action="/Dashboard/" method="post">{% csrf_token %}
+                    <button type="submit"} name="r_id" value={{ rest.id }}>Made me sick</button>
+                </form></td>
+            </tr>
+            {% endfor %}
+	      </tbody>
+      </table>
 			</div>
 		</div>
     	</div>

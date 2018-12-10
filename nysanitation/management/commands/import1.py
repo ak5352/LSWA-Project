@@ -14,7 +14,7 @@ class Command(BaseCommand):
             if (t):
                 t = False
                 continue
-            foo = resturant(name=line[1], cuisine=line[7], score=line[13], borough=line[2], violation=line[11])
+            foo = resturant(name=line[1], cuisine=line[7], score=line[13], borough=line[2], address=line[3] + ", " + line[4])
             try:
                 foo.save()
             except Exception as e:

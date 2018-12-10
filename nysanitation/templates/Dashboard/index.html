@@ -53,22 +53,17 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>Blah</td>
-			<td>Blah</td>
-			<td>Blah</td>
-			<td>Blah</td>
-			<td>Blah</td>
-		</tr>
-		<tr>
-			<td>Blah</td>
-			<td>Blah</td>
-			<td>Blah</td>
-			<td>Blah</td>
-			<td>Blah</td>
-		</tr>
+      {% for rest in results %}
+      <tr>
+      <td>{{ rest.name }}</td>
+      <td>{{ rest.cuisine }}</td>
+      <td>{{ rest.address }}</td>
+      <td>{{ rest.score }}</td>
+      <td>{{ rest.count }}</td>
+      </tr>
+      {% endfor %}
 	</tbody>
-</table>
+      </table>
 		</div>
 	</div>
 
