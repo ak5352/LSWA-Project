@@ -48,32 +48,13 @@ def Dashboard(request):
     if request.method == 'POST':
         r_id = request.POST["r_id"]
         rest = resturant.objects.filter(pk=r_id).update(count = F('count')+1)
-        user = request.user
-        user.profile.restaurants_list.append(r_id)
-        user.save()
+        profile = request.user.profile
+        profile.restaurants_list.append(r_id)
+        request.user.save()
 
-    user_rests = user.profile.restaurants_list
+    user_rests = request.user.profile.restaurants_list
     rest = resturant.objects.filter(id__in=user_rests)
     return render(request, 'Dashboard/index.html', {'results': rest})
-
-
-def Filter(request):
-    cuisine = request.GET.get('cuisine', '');
-    borough = request.GET.get('borough', '');
-    score = request.GET.get('score', '');
-    if cuisine != '' and borough != '' and score != '':
-        print("HERE")
-        kwargs = {}
-        if cuisine != 'no-preference':
-            kwargs["cuisine"]=cuisine.capitalize()
-        if borough != 'no-preference':
-            kwargs["borough"]=borough
-        if score != 'no-preference':
-            kwargs["score"]=int(score)
-
-        rest = resturant.objects.filter(**kwargs)
-        return render(request, 'Filter/index.html', {'results': rest})
-    return render(request, 'Filter/index.html')
 
 
 def Login(request):
@@ -110,4 +91,37 @@ def Register(request):
 
 
 def Search(request):
+    search_type = request.GET.get('filter', '')
+    search_value = request.GET.get('search-value', '')
+    if search_value != '' and search_type != '':
+        kwargs = {}
+        if search_type == "restaurant-name":
+            kwargs["name"] = search_value
+        elif search_type == "address":
+            kwargs["address"] = str(search_value)
+        else:
+            kwargs["zipcode"] = search_value
+
+        rest = resturant.objects.filter(**kwargs)
+        return render(request, 'Search/index.html', {'results': rest})
+
     return render(request, 'Search/index.html')
+
+
+def Filter(request):
+    cuisine = request.GET.get('cuisine', '');
+    borough = request.GET.get('borough', '');
+    score = request.GET.get('score', '');
+    if cuisine != '' and borough != '' and score != '':
+        kwargs = {}
+        if cuisine != 'no-preference':
+            kwargs["cuisine"]=cuisine.capitalize()
+        if borough != 'no-preference':
+            kwargs["borough"]=borough
+        if score != 'no-preference':
+            kwargs["score"]=int(score)
+
+        rest = resturant.objects.filter(**kwargs)
+        return render(request, 'Filter/index.html', {'results': rest})
+
+    return render(request, 'Filter/index.html')

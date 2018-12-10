@@ -12,6 +12,7 @@ class resturant(models.Model):
     borough = models.CharField(max_length=100)
     address = models.CharField(max_length=500)
     count = models.IntegerField(default=0)
+    zipcode = models.IntegerField()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -50,9 +50,9 @@
 					</div>
 
 					<div class="wrap-input100">
-						<select class="select100">
-							<option value="restaruant-name">Restaurant Name</option>
-							<option value="resutaurant-address">Restaurant Address</option>
+						<select class="select100" name="filter">
+							<option value="restaurant-name">Restaurant Name</option>
+							<option value="restaurant-address">Restaurant Address</option>
 							<option value="restaurant-zipcode">Restaurant Zipcode</option>
 						</select>
 					</div>
@@ -64,7 +64,35 @@
 						</button>
 					</div>
 				</form>
-			</div>
+        <br>
+			  <table class="container">
+        <thead>
+		        <tr>
+			          <th><h1>Restaurant Name</h1></th>
+			          <th><h1>Cusine Type</h1></th>
+			          <th><h1>Address</h1></th>
+			          <th><h1>Zipcode</h1></th>
+			          <th><h1>Score</h1></th>
+			          <th><h1>Sick Count</h1></th>
+                <th><h1>Report</h1></th>
+		        </tr>
+	      </thead>
+	      <tbody>
+            {% for rest in results %}
+            <tr>
+                <td>{{ rest.name }}</td>
+                <td>{{ rest.cuisine }}</td>
+                <td>{{ rest.address }}</td>
+                <td>{{ rest.zipcode }}</td>
+                <td>{{ rest.score }}</td>
+                <td>{{ rest.count }}</td>
+                <td><form action="/Dashboard/" method="post">{% csrf_token %}
+                    <button class="btn btn-danger" type="submit"} name="r_id" value={{ rest.id }}>Made me sick</button>
+                </form></td>
+            </tr>
+            {% endfor %}
+	      </tbody>
+      </table>
 		</div>
 	</div>
 
