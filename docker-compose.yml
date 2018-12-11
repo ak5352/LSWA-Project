@@ -5,7 +5,7 @@ services:
     container_name: nginx
     image: nginx:latest
     ports:
-      - 8001:80
+      - 8000:80
     environment:
       - NGINX_PORT=80
     volumes:
@@ -13,19 +13,32 @@ services:
       - ./load_balancer/nginx.conf:/etc/nginx/nginx.conf
     tty: true
     depends_on:
-      - web
+      - web1
+      - web2
       - memcached
   memcached:
     container_name: memcached
     image: memcached:latest
-  web:
+  web1:
     build: 
       context: ./src
       dockerfile: ./Dockerfile
     command: python3 manage.py runserver 0.0.0.0:8000
     working_dir: /code/src
     ports:
-      - 8000:8000
+      - 8001:8000
+    volumes:
+      - .:/code
+    depends_on:
+      - memcached
+  web2:
+    build: 
+      context: ./src
+      dockerfile: ./Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:8000
+    working_dir: /code/src
+    ports:
+      - 8002:8000
     volumes:
       - .:/code
     depends_on:
