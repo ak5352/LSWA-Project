@@ -9,6 +9,15 @@ from pprint import PrettyPrinter
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from django.shortcuts import get_object_or_404
+from secrets import token_hex
+from datetime import datetime
+import logging
+import json
+import bmemcached
+import htmlmin
+
+client = bmemcached.Client(('memcached:11211', ), '','')
+server_hash = token_hex(nbytes=4)
 
 def dprint(object, stream=None, indent=1, width=80, depth=None):
     """
@@ -40,7 +49,8 @@ def dprint(object, stream=None, indent=1, width=80, depth=None):
     printer.pprint(object)
 
 def index(request):
-    return render(request, 'index.html')
+            
+    return render(request, 'index.html', {'server_hash': server_hash})
 
 
 @login_required(login_url='/Login/')
@@ -101,10 +111,14 @@ def Search(request):
             kwargs["address"] = str(search_value)
         else:
             kwargs["zipcode"] = search_value
-
+        key = request.get_full_path()
         rest = resturant.objects.filter(**kwargs)
-        return render(request, 'Search/index.html', {'results': rest})
-
+        response = render(request, 'Search/index.html', {
+            'results': rest, 'timestamp': str(datetime.now())
+        })
+        html = htmlmin.minify(response.content.decode("utf-8"), remove_empty_space=True)
+        client.set(key, html, time=10, compress_level=0)
+        return response
     return render(request, 'Search/index.html')
 
 
