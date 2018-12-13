@@ -18,6 +18,7 @@ import htmlmin
 
 client = bmemcached.Client(('memcached:11211', ), '','')
 server_hash = token_hex(nbytes=4)
+cache_time_out = 20
 
 def dprint(object, stream=None, indent=1, width=80, depth=None):
     """
@@ -114,12 +115,16 @@ def Search(request):
         key = request.get_full_path()
         rest = resturant.objects.filter(**kwargs)
         response = render(request, 'Search/index.html', {
-            'results': rest, 'timestamp': str(datetime.now())
+            'results': rest, 
+            'timestamp': datetime.now().strftime("%H:%M:%S"),
+            'server_hash': server_hash
         })
         html = htmlmin.minify(response.content.decode("utf-8"), remove_empty_space=True)
-        client.set(key, html, time=10, compress_level=0)
+        client.set(key, html, time=cache_time_out, compress_level=0)
         return response
-    return render(request, 'Search/index.html')
+    return render(request, 'Search/index.html', {
+        'server_hash': server_hash
+    })
 
 
 def Filter(request):
