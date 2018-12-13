@@ -8,9 +8,9 @@ class Command(BaseCommand):
         t = True
         i = 0
         for line in csv.reader(f):
-            if (t):
-                t = False
-                continue
+            if i == 9999:
+                break
+            i += 1
             foo = resturant(name=line[1], cuisine=line[7], score=line[13], borough=line[2], address=line[3] + ", " + line[4], zipcode=line[5])
             try:
                 foo.save()

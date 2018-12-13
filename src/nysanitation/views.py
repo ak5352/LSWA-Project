@@ -50,7 +50,7 @@ def dprint(object, stream=None, indent=1, width=80, depth=None):
     printer.pprint(object)
 
 def index(request):
-            
+
     return render(request, 'index.html', {'server_hash': server_hash})
 
 
@@ -106,11 +106,18 @@ def Search(request):
     search_value = request.GET.get('search-value', '')
     if search_value != '' and search_type != '':
         kwargs = {}
-        if search_type == "restaurant-name":
-            kwargs["name"] = search_value
-        elif search_type == "address":
-            kwargs["address"] = str(search_value)
+        if search_type != "restaurant-address":
+            if search_type == "restaurant-name":
+                kwargs["name"] = search_value
+            elif search_type == "restaurant-zipcode":
+                kwargs["zipcode"] = search_value
+                key = request.get_full_path()
+                rest = resturant.objects.filter(**kwargs)
+                response = render(request, 'Search/index.html', {
+                    'results': rest, 'timestamp': str(datetime.now())
+                })
         else:
+<<<<<<< HEAD
             kwargs["zipcode"] = search_value
         key = request.get_full_path()
         rest = resturant.objects.filter(**kwargs)
@@ -119,6 +126,13 @@ def Search(request):
             'timestamp': datetime.now().strftime("%H:%M:%S"),
             'server_hash': server_hash
         })
+=======
+            key = request.get_full_path()
+            rest = resturant.objects.filter(address=search_value)
+            response = render(request, 'Search/index.html', {
+                'results': rest, 'timestamp': str(datetime.now())
+            })
+>>>>>>> df479d1a785c81e4fbf894cb6cb4c4dcbd82619b
         html = htmlmin.minify(response.content.decode("utf-8"), remove_empty_space=True)
         client.set(key, html, time=cache_time_out, compress_level=0)
         return response
